@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class DynamoDBConfig {
     public static String SERVICE_ENDPOINT = "dynamodb.us-east-1.amazonaws.com";
     public static String REGION = "us-east-1";
-    public static String ACCES_KEY = "xxx";
+    public static String ACCESS_KEY = "xxx";
     public static String SECRET_KEY = "xxx";
 
     @Bean
@@ -25,6 +25,6 @@ public class DynamoDBConfig {
 
         return AmazonDynamoDBClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(SERVICE_ENDPOINT, REGION))
-                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(ACCES_KEY, SECRET_KEY))).build();
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY))).build();
     }
 }

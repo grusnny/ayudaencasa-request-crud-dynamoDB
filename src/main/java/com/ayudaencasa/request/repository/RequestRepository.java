@@ -2,12 +2,13 @@ package com.ayudaencasa.request.repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.ayudaencasa.request.model.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +25,10 @@ public class RequestRepository {
 
     public Request findRequestById(String wId) {
         return mapper.load(Request.class, wId);
+    }
+
+    public PaginatedScanList<Request> findAllRequests() {
+        return mapper.scan(Request.class, new DynamoDBScanExpression());
     }
 
     public String deleteRequest(Request request) {
