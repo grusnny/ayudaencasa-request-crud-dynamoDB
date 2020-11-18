@@ -33,7 +33,7 @@ public class RequestRepository {
 
     public String deleteRequest(Request request) {
         mapper.delete(request);
-        return "Usuario eliminado";
+        return "Solicitud eliminada";
     }
 
     public String editRequest(Request request) {
@@ -45,7 +45,7 @@ public class RequestRepository {
 
         DynamoDBSaveExpression dynamoDBSaveExpression = new DynamoDBSaveExpression();
         Map<String, ExpectedAttributeValue> expectedMap = new HashMap<>();
-        expectedMap.put("uId", new ExpectedAttributeValue(new AttributeValue().withS(request.getuId())));
+        expectedMap.put("wId", new ExpectedAttributeValue(new AttributeValue().withS(request.getwId())));
         dynamoDBSaveExpression.setExpected(expectedMap);
         return dynamoDBSaveExpression;
     }
